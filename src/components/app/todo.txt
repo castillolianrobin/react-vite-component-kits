@@ -1,0 +1,53 @@
+17 AppButton [DONE] [TESTED] [PAGED]
+2 AppForm [DONE] [TESTED] [PAGED] 
+1 AppFormInput 
+3 AppFormCheckbox [DONE] [SEMI TESTED] [PAGED]
+4 AppFormCheckboxGroup [DONE] [TESTED] [PAGED]
+5 AppFormRadio [DONE] [SEMI TESTED] [PAGED]
+6 AppFormRadioGroup [DONE] [TESTED] [PAGED]
+7 AppFormSelect [DONE] [TESTED] [PAGED]
+8 AppFormTextArea [DONE] [TESTED] [PAGED]
+9 AppFormMultiSelect [PARTIALLY DONE] [TESTED] [PAGED] --- EMPTY STATE
+10 AppFormFile [DONE] [TESTED] [PAGED]
+~ AppFormDatePicker (POSTPONED)
+12 AppModal [DONE] [PAGED]
+13 AppPagination  [DONE] [TESTED] [PAGED]
+14 AppTable [DONE] [TESTED] [PAGED]
+15 AppCards [PARTIALLY DONE] [TESTED] [PAGED]
+16 AppDropdown [DONE] [TESTED] [PAGED] 
+
+~ AppTabs [PARTIAL] [TESTED] [PAGED]
+- PageLoader
+- AppTooltip [DONE] [TESTED] [PAGED]
+- AppSteps DONE] [TESTED] [PAGED]
+1 AppChip
+
+- Login (Cypress Test) (API)
+- Use Creation (Steps) (Cypress Test)
+- User List (with roles) (Cypress Test) (API)
+1. Project List (with assigned people)
+2. Task List (with asigned poeple and project)
+3. DarkMOde on API
+
+
+Dark:
+  Text: secondary-100
+  Bg: secondary-900
+  border: secondary-700
+  accent: primary-200
+
+Light:
+  Text: secondary-800
+  Bg: secondary-100/white
+  border: secondary-200
+  accent: primary-900
+
+
+EXTRAS: 
+Accordion
+HOC/Renderless Component for fetching api then returning it to scoped slots
+Progress Bar
+Avatar
+Slider
+Skeleton
+AppToast
