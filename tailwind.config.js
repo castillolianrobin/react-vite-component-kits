@@ -13,7 +13,7 @@
     darkMode: 'class',
     safelist: [
       {
-        pattern: /(bg|text|border|outline|fill)-(primary|secondary|success|error|warning)-(200|500)/,
+        pattern: /(bg|text|border|outline|fill)-(primary|secondary|success|error|warning)-(200|500|400)/,
         variants: ['active', 'hover', 'focus', 'group-focus-within', 'group-hover', 'disabled', 'even'],
       },
       {
@@ -24,15 +24,15 @@
     theme: {
       extend: {
         colors: {
-          primary: colors.emerald,
-          secondary: colors.zinc,
+          primary: colors.sky,
+          secondary: colors.slate,
           info: colors.blue,
           alert: colors.orange,
-          error: colors.red,
+          error: colors.rose,
           success: colors.green,
           // Date Picker colors
-          "vtd-primary": colors.emerald,
-          "vtd-secondary": colors.zinc,
+          // "vtd-primary": colors.emerald,
+          // "vtd-secondary": colors.zinc,
         },
         gridTemplateColumns: {
           dashboard: "auto 1fr",

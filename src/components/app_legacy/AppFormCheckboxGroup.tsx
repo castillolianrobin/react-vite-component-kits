@@ -1,6 +1,6 @@
 import { memo, useEffect } from 'react';
 import { FormValidation, Validations, useValidation } from '../../utils/validation';
-import { AppFormError, AppFormLabel } from './';
+import { AppFormError, AppFormLabel } from '.';
 import AppFormCheckbox, { CheckboxChildProps } from './AppFormCheckbox';
 
 /** Radio Group */

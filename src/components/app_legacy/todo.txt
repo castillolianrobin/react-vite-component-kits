@@ -1,5 +1,10 @@
-17 AppButton [DONE] [TESTED] [PAGED]
-2 AppForm [DONE] [TESTED] [PAGED] 
+DO NOT OVERTHINK ABOUT LAYOUT HANDLING,
+IT WILL RERENDER ANYWAY
+
+
+
+- AppButton [DONE] [TESTED] [PAGED]
+~ AppForm [PARTIALLY DONE] [TESTED] [PAGED] 
 1 AppFormInput 
 3 AppFormCheckbox [DONE] [SEMI TESTED] [PAGED]
 4 AppFormCheckboxGroup [DONE] [TESTED] [PAGED]
@@ -10,11 +15,11 @@
 9 AppFormMultiSelect [PARTIALLY DONE] [TESTED] [PAGED] --- EMPTY STATE
 10 AppFormFile [DONE] [TESTED] [PAGED]
 ~ AppFormDatePicker (POSTPONED)
-12 AppModal [DONE] [PAGED]
-13 AppPagination  [DONE] [TESTED] [PAGED]
-14 AppTable [DONE] [TESTED] [PAGED]
-15 AppCards [PARTIALLY DONE] [TESTED] [PAGED]
-16 AppDropdown [DONE] [TESTED] [PAGED] 
+11 AppModal [DONE] [PAGED]
+12 AppPagination  [DONE] [TESTED] [PAGED]
+13 AppTable [DONE] [TESTED] [PAGED]
+- AppCards [PARTIALLY DONE] [TESTED] [PAGED]
+14 AppDropdown [DONE] [TESTED] [PAGED] 
 
 ~ AppTabs [PARTIAL] [TESTED] [PAGED]
 - PageLoader

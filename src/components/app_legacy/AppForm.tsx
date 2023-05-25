@@ -1,12 +1,9 @@
-import { FormEvent, FormHTMLAttributes, ReactNode } from "react";
-// Hooks
-import { 
-  useCreateThemedColor, type ThemedColorTypes, 
-  useCreateFormValidation, type ValidationTypes
-} from "@/hooks";
+import { FormEvent, FormHTMLAttributes, ReactNode, useEffect, useState } from "react";
+import { FormErrors, FormValidation, useCreateFormValidation } from "../../utils/validation";
+import { ThemeColors, createThemedColor } from "../../utils/useThemedColor";
 
 export default function AppForm(props: Props) {
-  /** Form Validation Hook (Iniitalization) */
+  // dynamic form error handling
   const { 
     startValidation, 
     errors, 
@@ -14,9 +11,7 @@ export default function AppForm(props: Props) {
     FormValidationProvider, 
   } = useCreateFormValidation()
   
-
-  /** Themed Color Hooks (Iniitalization / Provider) */
-  const { ColorProvider, color } = useCreateThemedColor(props.color);
+  const { ColorProvider, color } = createThemedColor(props.color);
 
   const _props = { ...props };
   delete _props['render'];
@@ -46,6 +41,6 @@ export default function AppForm(props: Props) {
 interface Props extends FormHTMLAttributes<unknown> {
   children?: ReactNode;
   onSubmit?: (e?: any) => void;
-  color?: ThemedColorTypes.ThemeColors;
-  render?: (formValidation?: ValidationTypes.FormValidation, error?: ValidationTypes.FormErrors) => ReactNode;
+  color?: ThemeColors;
+  render?: (formValidation?: FormValidation, error?: FormErrors) => ReactNode;
 }

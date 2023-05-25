@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { FormValidation, Validations, useValidation } from '../../utils/validation';
-import { AppFormError, AppFormLabel } from './';
+import { AppFormError, AppFormLabel } from '.';
 import AppFormRadio, { RadioChildProps } from './AppFormRadio';
 
 /** Radio Group */

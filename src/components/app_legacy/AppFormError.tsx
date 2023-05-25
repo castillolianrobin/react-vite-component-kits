@@ -1,5 +1,5 @@
-import { HTMLAttributes } from 'react'
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { HTMLAttributes } from 'react'
+import { motion, AnimatePresence, HTMLMotionProps, ForwardRefComponent } from 'framer-motion';
 
 export default function AppFormError(props: Props) {
   return (
@@ -11,7 +11,7 @@ export default function AppFormError(props: Props) {
         props.children && 
         <motion.div 
           initial={{ opacity: 0, maxHeight: 0, }}
-          animate={{ opacity: 1, maxHeight: 30}}
+          animate={{ opacity: 1, maxHeight: 12}}
           exit={{ opacity: 0, maxHeight: 0 }}
           transition={{ duration: 0.1 }}   
         >

@@ -1,7 +1,7 @@
 export default {
-  filter(
-    obj: Record<any, any>, 
-    filter: (value: any, key: string | number) => boolean
+  filter <Obj extends object> (
+    obj: Obj,
+    filter: (value: any, key: keyof Obj) => boolean
   ) {
     const _obj: Record<any, any> = {};
 
@@ -16,7 +16,16 @@ export default {
 
     return { ..._obj };
   },
-  deleteProperties<Type>(obj: object, keys: string[]): Type | Record<any, any> {
-    return this.filter(obj, (_, key)=>!keys.includes(key as never))
+  deleteProperties<T extends object, U extends keyof T>(obj: T, properties: U[]): Omit<T, U> {
+    const filteredObject = { ...obj };
+  
+    properties.forEach((key) => {
+      delete filteredObject[key];
+    });
+  
+    return filteredObject;
   }
 }
+
+
+// type FilteredObject<T, U> = Omit<T, U>;

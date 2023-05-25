@@ -4,32 +4,28 @@ export default function AppFormLabel(props: Props) {
   
   const textSizeClass = ()=>{
     switch (props.size) {
-      case 'lg': return 'text-lg';
-      case 'md': return 'text-md';
+      case 'xs': return 'text-xs';
       case 'sm': return 'text-sm';
-      case 'xs': default: return 'text-xs';
+      case 'lg': return 'text-lg';
+      case 'md': default: return 'text-md';
     }
   };
   
   return (
     <label 
       { ...props }
-      htmlFor={ props.name }
+      htmlFor={props.name}
       className={`
-        pb-1
-        select-none 
+        pb-1 
         transition-colors
+        text-xs group-focus-within:text-${props.disabled ? 'secondary-400' : props.color }-500
         ${ props.className }
         ${ textSizeClass() }
-        ${ props.disabled ? 'text-secondary-400' : '' } 
-        group-focus-within:text-${ props.color }
       `}
     >
       { props.children }
       {/* Required Sign */}
-      { props.required && 
-          (<span className="text-error-500">*</span> ) 
-      }
+      { props.required && (<span className="text-error-500">*</span> ) }
     </label>
   )
 }

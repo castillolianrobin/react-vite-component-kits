@@ -1,4 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { parseValidationArray, parseValidationString, type Validation } from "./validations";
+export { type Validation, type ValidationResults } from './validations';
+
+
 
 const formValidationContext = createContext<{
   addInput?: () => void;
@@ -79,23 +83,41 @@ export function useCreateFormValidation() {
 /** 
  * Input validation handler 
  */
-export function useValidation(
+export const useValidation = (
   /** Input Value to validated */
-  value: any,
+  value: unknown,
   /** Set of validations to run */
   validations: Validations, 
   /** Form object passed by parent form with createFormValidation() hook  */
   _formValidation?: FormValidation
-) {
+) => {
   
   /** Error messages from validations */
   const [errors, setErrors] = useState<string[]>([]);
   
+  /** Current error message to be displayed */
+  const errorMessage = `${errors.length ? errors[0] : ''}`;
+
+  /** LOCAL VARIABLE: returns all the set of validation functions based on validation props */
+  const validationArr = (): ValidationItemFunction[] => {
+    const _validations = validations;
+
+    if (typeof _validations === "string") {
+      return parseValidationString(_validations)      
+    } else if (Array.isArray(_validations)) {
+      return parseValidationArray(_validations);
+    } else { 
+      return []; 
+    }
+  };
+  
+  
   /** Validation handler */
   function validateValue(validationFunc: Validation) {
-    const error = validationFunc(value?.current || value);
+    const error = validationFunc(value);
     return error;
   }
+  
 
   const formValidation = useContext(formValidationContext) || _formValidation;
 
@@ -111,7 +133,7 @@ export function useValidation(
       for (const validation of validations) {
         if (typeof validation === 'function') {
           const err = validateValue(validation)
-          err && _errors.push(err);
+          err && _errors.push(`${err}`);
         }
       }
     }
@@ -132,14 +154,16 @@ export function useValidation(
 
   
   /** This script will only work if validateOnChange is toggled */
-  const [ isCalidateOnChange, validateOnChange ] = useState(false);
+  const [ isValidateOnChange, validateOnChange ] = useState(false);
   useEffect(()=>{
-    isCalidateOnChange && (runValidations());
-  }, [value]);
+    isValidateOnChange && runValidations();
+  }, [ value ]);
   
   return {
     /** Array of error message from validations */
     errors,
+    /** Current Error Message */
+    errorMessage,
     /** Execute all validations passed from this hook */
     runValidations,
     /** execute if validation should run when value change  */ 
@@ -147,7 +171,8 @@ export function useValidation(
   }
 }
 
-/** TYPE DEFINITIONS */
+
+/** __TYPE DEFINITIONS__ */
 
 export type FormErrors = Array<string[]>;
 
@@ -155,7 +180,29 @@ export interface FormValidation {
   addInput: () => void;
   addValidated: (error?: string[]) => void,
   validationKey: string, 
-};
+}
 
-export type Validation = (v?:unknown)=> false | string;
+
+/** useFormValidation interface */
+export interface UseFormValidation {
+  ( 
+    value: any,
+    validations: Array<ValidationItem> | string,
+    name?:  string
+  ): useFormValidationReturn
+}
+interface useFormValidationReturn {
+  isRequired: boolean;
+  runValidation: CallableFunction;
+  error: string[];
+  errorMessage: string;
+  validateOnChange: CallableFunction;
+  // updateValid: (flag: boolean) => void;
+}
+
+// export type Validation = (v?:unknown)=> false | string;
 export type Validations = string | Array<string | Validation>;
+
+/** Used in validation props. Type for validation passed in useformValidation() second argument  */
+export type ValidationItem = Validation | string;
+export type ValidationItemFunction = (Validation|(()=>Validation))

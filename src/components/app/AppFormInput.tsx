@@ -1,49 +1,38 @@
-import { HtmlHTMLAttributes, InputHTMLAttributes, ReactNode, useEffect, useRef } from "react";
-
+import { InputHTMLAttributes, ReactNode, } from "react";
 // Components
-import {  AppFormInputContainer, AppFormInputContainerExtras } from "./";
-import { ContainerProps } from "./AppFormInputContainer";
-// Helpers
-import { objectHelper } from "../../helpers";
+import { AppFormInputContainer, AppFormInputContainerProps } from ".";
 // Hooks
-import { ThemeColors } from "../../utils/useThemedColor";
-import { 
-  useThemedColor, 
-  useValidation, 
-  FormValidation, 
-  Validations 
-} from "../../utils";
+import { useFormValidation, useThemedColor } from "@/hooks";
+import type { ThemedColorTypes, ValidationTypes } from "@/hooks";
+// Helpers 
+import { objectHelper } from "@/helpers";
 
-
-export default function AppFormInput(props: Props) {  
-  
-  /** useValidation Hook */
-  const { 
-    errors: validationErrors,
-    validateOnChange 
-  } = useValidation(props.value, props.validations || [], props?.formValidation)
+export default function AppFormInput<T>(props: Props<T>) {
+  /** Validations */
+  const { validateOnChange, errorMessage, isRequired } 
+    = useFormValidation(props.value, props.validations || [], props.name)
   
   /** Themed Color Hook */
   const { color } = useThemedColor(props.color);
   
-  /** Component Logic */  
   
-  // Main Errro
-  const error = `${props.error || validationErrors[0] || ''}`
   
-  // Input watcher
-  const inputHasChanged = useRef(false);
+  /** Internal Logic */
   
-  // input element props (remove unneeccesary properties)
-  const _props = objectHelper.deleteProperties<InputHTMLAttributes<unknown>>(
-    props, 
-    ['formValidation', 'onValueChange']
+  // Props to be mounted to native input 
+  const inputProps = objectHelper.deleteProperties(
+    props,
+    [ 'onValueChange']
   );
+
+  // Error Message
+  const error = `${ props.error || errorMessage }`;
   
   /** Handles The input event of main input element*/
   function onChangeHandler(e: React.FormEvent<HTMLInputElement>){
-    const inputValue = e.currentTarget.value;
-    inputHasChanged.current = true;
+    if (props.disabled) return;
+
+    const inputValue = e.currentTarget.value ;
     props.onValueChange && props.onValueChange(inputValue);
     props.onChange && props.onChange(e);
   }
@@ -52,70 +41,44 @@ export default function AppFormInput(props: Props) {
   function onFocusHandler() {
     validateOnChange(true);
   }
-
+  
+  
   return (
-    <div className={`group ${props.hidden ? 'hidden' : 'block'}`}>      
-      {/* Input Container */}
-      <AppFormInputContainer
-        color={color}
-        error={error}
-        disabled={props.disabled}
-        name={props.name}
-        label={props.label}
-        // label-class={props.labelClass}
-        // error={props.error || errorMessage}
-        // error-class={props.errorClass}
-        // required={isRequired}
-      >
-        {/** Prepend */}
-        <InputInsertable color={color}>{ props.prepend }</InputInsertable>
-        {/* Input */}
-        <input 
-          { ..._props }
-          className="px-1 bg-transparent outline-none" 
-          onInput={ onChangeHandler } 
-          onFocus={ onFocusHandler}
-        />
-        {/** Append */}
-        <InputInsertable color={color}>{ props.append }</InputInsertable>
-      </AppFormInputContainer>
-    </div>
-  )
-}
-
-// Append / Prepend Component
-export function InputInsertable(props: InputInsertableProps) {
-  return (
-    props.children 
-      ? <div 
-        { ...props } 
-        className={`
-          group-focus-within:text-${props.color}
-          group-focus-within:fill-${props.color}
-          group-focus-within:stroke-${props.color}
-        `}
-      >
-        { props.children }
-      </div>
-      : <span></span>
+    <AppFormInputContainer
+      color={ color }
+      disabled={ props.disabled }
+      required={ isRequired() }
+      error={ error }
+      error-class={ props.errorClass }
+      name={ props.name }
+      label={ props.label }
+      label-class={ props.labelClass }
+      append={ props.append }
+      prepend={ props.prepend }
+      className={ `group ${props.hidden ? 'hidden' : 'block'} ${props.className}` }
+    >
+      {/* Input */}
+      <input
+        { ...inputProps }
+        value={`${props.value}`}
+        onChange={ onChangeHandler } 
+        onFocus={ onFocusHandler}
+        aria-label={props.name || props.label}
+        className="px-1 w-full bg-transparent outline-none" 
+      />
+    </AppFormInputContainer>
   )
 }
 
 
-
-/** __TYPE DEFINITIONS */
-
-interface InputInsertableProps extends HtmlHTMLAttributes<unknown> { 
-  color?: ThemeColors
-}
-
-interface Props extends InputHTMLAttributes<unknown>, ContainerProps {
-  onValueChange?: (e: string) => void;
+interface Props <T> extends Omit<InputHTMLAttributes<unknown>, 'value'>,  AppFormInputContainerProps {
+  value?: T;
+  onValueChange?: (e: string ) => void;
   label?: string;
   error?: string | ReactNode;
-  color?: ThemeColors;
+  color?: ThemedColorTypes.ThemeColors;
+  validations?: ValidationTypes.ValidationProps;
   prepend?: string | number | ReactNode;
   append?: string | number | ReactNode;
-  validations?: Validations;
-  formValidation?: FormValidation;
+  // formValidation?: FormValidation;
 }

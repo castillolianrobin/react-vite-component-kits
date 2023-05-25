@@ -1,6 +1,7 @@
 import { RouteObject, createBrowserRouter } from "react-router-dom";
 import App from '../App';
-import { lazyLoadRoute } from "./RouteLazy";
+import componentRoutes from "@/modules/_components/_components.routes";
+import LayoutDashboardComponent from "@/layout/LayoutDashboardComponent";
 
 const routes:RouteObject[] = [
   {
@@ -8,9 +9,14 @@ const routes:RouteObject[] = [
     element: <App />,
     children: [
       {
-        path: '/',
-        element: lazyLoadRoute(() => import(`../pages/public/LoginPage`)),
-      }
+        path: '/_component',
+        element: <LayoutDashboardComponent />,
+        children: [ ...componentRoutes ],
+      },    
+      // {
+      //   path: '/',
+      //   element: lazyLoadRoute(() => import(`../pages/public/LoginPage`)),
+      // },
     ],
   },
 ];
@@ -18,6 +24,13 @@ const routes:RouteObject[] = [
 
 const router =  createBrowserRouter([
   ...routes,
+  {
+    loader() {
+      console.log('asda');
+      return null;
+    },
+    
+  }
 ]);
 
 export default router;

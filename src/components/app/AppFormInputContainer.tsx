@@ -1,10 +1,14 @@
 import { HtmlHTMLAttributes, ReactNode } from "react"
-import { ThemeColors } from "../../utils/useThemedColor"
+// Components
 import { AppFormError, AppFormLabel } from "."
+// Hooks
+import { ThemedColorTypes } from "@/hooks"
 
 
-export default function AppFormInputContainerMain(props: ContainerProps) {  
-  const colorInactive = (): ThemeColors => {
+export default function AppFormInputContainerMain(props: Props) {  
+  
+  // Color for inactive state
+  const colorInactive = (): ThemedColorTypes.ThemeColors => {
     if (props.error) return 'error-500';
     else if (props.disabled) return 'secondary-400';
     else return 'secondary-500';
@@ -12,13 +16,13 @@ export default function AppFormInputContainerMain(props: ContainerProps) {
   
   return (
     <div 
-      className={`group ${props.hidden ? 'hidden' : 'block'}`}
+      className={`group dark:text-secondary-100`}
     >
       {/* Label */}
       <AppFormLabel
-        required={props.required}
-        disabled={props.disabled}
-        name={props.name} 
+        required={ props.required }
+        disabled={ props.disabled }
+        name={ props.name } 
         className={`group-focus-within:text-${props.color} ${props.labelClass}`}
       >
         { props.label }
@@ -31,7 +35,7 @@ export default function AppFormInputContainerMain(props: ContainerProps) {
           relative flex
           rounded
           border border-${colorInactive()}
-        group-focus-within:bg-white
+        bg-white dark:bg-secondary-700
           group-focus-within:outline
           outline-1 outline-${props.color}
           group-focus-within:border-${props.color}
@@ -39,9 +43,14 @@ export default function AppFormInputContainerMain(props: ContainerProps) {
           ${props.className}
         `}
       >
+        {/** Prepend */}
+        <InputInsertable color={props.color}>{ props.prepend }</InputInsertable>
+
         {/* Input */}
         { props.children }
-        
+
+        {/** Append */}
+        <InputInsertable color={props.color}>{ props.append }</InputInsertable>
       </div>
 
       {/* Error Message */}
@@ -50,19 +59,43 @@ export default function AppFormInputContainerMain(props: ContainerProps) {
   )
 }
 
+export function InputInsertable(props: InputInsertableProps) {
+  return (
+    props.children 
+      ? <div 
+        { ...props } 
+        className={`
+          group-focus-within:text-${props.color}
+          group-focus-within:fill-${props.color}
+          group-focus-within:stroke-${props.color}
+        `}
+      >
+        { props.children }
+      </div>
+      : <span></span>
+  )
+}
+
+
 /** __TYPE DEFINITIONS__ */
 
-export interface ContainerProps extends Props, Omit<HtmlHTMLAttributes<unknown>, "color"> {}
+interface Props extends AppFormInputContainerProps, Omit<HtmlHTMLAttributes<unknown>, "color"> {}
 
-interface Props {
+export interface AppFormInputContainerProps {
   disabled?: boolean;
   required?: boolean;
   label?: string;
-  color?: ThemeColors;
+  color?: ThemedColorTypes.ThemeColors;
   error?: string | ReactNode;  
+  errorClass?: string;
   append?: ReactNode;
   prepend?: ReactNode;
   labelClass?: string;
   name?: string;
+
+}
+
+interface InputInsertableProps extends HtmlHTMLAttributes<unknown> { 
+  color?: ThemedColorTypes.ThemeColors
 }
 

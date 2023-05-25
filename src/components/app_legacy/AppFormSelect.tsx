@@ -1,5 +1,5 @@
 import { InputHTMLAttributes, ReactNode, useEffect, useRef, useState } from "react";
-import {AppFormError, AppFormLabel, AppFormInputContainer } from "./";
+import {AppFormError, AppFormLabel, AppFormInputContainer } from ".";
 import { 
   useValidation, 
   useThemedColor, 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import * as AppComponent from '../../components/app/index'; 
-import AppFormRadio from '../../components/app/AppFormRadio';
+import * as AppComponent from '../../components/app_legacy/index'; 
+import AppFormRadio from '../../components/app_legacy/AppFormRadio';
 export default function Sandbox() {
   const [radioValue, setRadioValue] = useState('');
   const [selectValue, setSelectValue] = useState('');

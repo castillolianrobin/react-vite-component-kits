@@ -1,4 +1,5 @@
 {
+  "exclude": ["src/**/__tests__/*", "src/**/app_legacy/*", "src/**/utils/*", "src/**/pages/public/*",],
   "compilerOptions": {
     "target": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
@@ -17,8 +18,16 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    
+    /* Absolute import */
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
   },
+  
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

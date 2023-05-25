@@ -1,5 +1,6 @@
 import {  useState } from "react";
-import { AppButton, AppForm, AppFormInput, AppModal } from "../../components/app";
+import { AppButton, AppForm, AppModal } from "../../components/app_legacy";
+import {   AppFormInput } from "../../components/app";
 
 export default function LoginPage() {
   const [ username, setUsername ] = useState('');
@@ -14,22 +15,23 @@ export default function LoginPage() {
         <AppForm 
           className="p-3 d-flex flex-col"
         >
+          
           <>
             <AppFormInput
               type="text" 
               label="Username"
               value={username}
-              onValueChange={setUsername}
-              validations={validation}
+              onValueChange={ setUsername }
+              validations="required"
             ></AppFormInput>
 
             <AppFormInput
-              color="error"
+              color="error-500"
               label="Password"
               type="password" 
               value={password}
               onValueChange={setPassword}
-              validations={validation}
+              validations="required"
             ></AppFormInput>
 
             <AppButton type="submit">
@@ -46,3 +48,13 @@ export default function LoginPage() {
     </div>
   )
 }
+
+
+
+// export default function LoginPage() {
+//   return (
+//     <div>
+//       Test
+//     </div>
+//   )
+// }

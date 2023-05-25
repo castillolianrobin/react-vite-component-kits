@@ -1,5 +1,6 @@
+import { ThemedColorTypes, useThemedColor } from "@/hooks";
 import { InputHTMLAttributes } from "react";
-import { useThemedColor } from "../../utils/useThemedColor";
+// import { useThemedColor } from "../../utils/useThemedColor";
 
 
 export default function AppFormRadio(props: Props) {
@@ -15,7 +16,7 @@ export default function AppFormRadio(props: Props) {
   function onChangeHandler(){
     const inputValue = activeValue;
     props.onValueChange && props.onValueChange(inputValue);
-    props.onChange && props.onChange(inputValue);
+    // props.onChange && props.onChange(inputValue);
   }
 
   return (
@@ -58,12 +59,12 @@ export default function AppFormRadio(props: Props) {
 }
 
 interface Props extends RadioChildProps {
-  onValueChange?: (e?: any) => void;
+  onValueChange?: (e?: unknown) => void;
 }
 
 export interface RadioChildProps extends InputHTMLAttributes<unknown> {
   label?: string;
-  color?: string;
-  activeValue?: any;
+  color?: ThemedColorTypes.ThemeColors;
+  activeValue?: unknown;
 }
 
