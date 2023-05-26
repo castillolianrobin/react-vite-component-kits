@@ -19,7 +19,7 @@ IT WILL RERENDER ANYWAY
 12 AppPagination  [DONE] [TESTED] [PAGED]
 13 AppTable [DONE] [TESTED] [PAGED]
 - AppCards [PARTIALLY DONE] [TESTED] [PAGED]
-14 AppDropdown [DONE] [TESTED] [PAGED] 
+- AppDropdown [DONE] [TESTED] [PAGED] 
 
 ~ AppTabs [PARTIAL] [TESTED] [PAGED]
 - PageLoader

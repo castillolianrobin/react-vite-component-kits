@@ -79,7 +79,24 @@ describe(name, ()=>{
       expect(item1.length).toBeGreaterThan(0);
     })
 
-    it('should hide if click outside', async ()=> {
+    it('hide the menu on item click', async ()=>{
+      const items = [
+        { text: 'Item Test', onClick() { console.log('test') } }
+      ];
+      renderDropdown(items);
+      const triggerButton = await triggerBtn();
+      if (!triggerButton) return it.fails('No Trigger button detected');
+
+      fireEvent.click(triggerButton);
+      const item = (await screen.queryByText(items[0].text)); 
+      expect(item).toBeInTheDocument();
+      item && fireEvent.click(item);
+
+      // if (!item) return it.fails('Item is missing');
+      expect(await getDropdownMenu()).toBeNull()
+    })
+
+    it('hide if click outside', async ()=> {
       const items = [
         { text: 'Item Test', onClick() { console.log('test') } }
       ];
