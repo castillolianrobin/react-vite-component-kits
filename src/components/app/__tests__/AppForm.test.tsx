@@ -5,7 +5,6 @@ import { describe, expect, it } from "vitest";
 // import { h } from "vue";
 import { AppButton, AppForm, AppFormInput } from '../'
 import { fireEvent, render } from "@testing-library/react";
-import { error } from "console";
 import { required } from "@/hooks/validation/validations";
 import { renderPropTest } from "@/components/__tests__/helpers/props.test";
 const name = 'AppForm';

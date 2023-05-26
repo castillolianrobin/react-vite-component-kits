@@ -13,6 +13,11 @@ const componentRoutes: ComponentRoutes[] = [
     element: lazyLoadRoute(() => import(`./pages/ButtonPage`)),
   },
   {
+    label: 'Dropdown',
+    path: 'dropdowns',
+    element: lazyLoadRoute(() => import(`./pages/DropdownPage`)),
+  },
+  {
     label: 'Form Validation',
     path: 'form/validation',
     element: lazyLoadRoute(() => import(`./pages/FormPage`)),

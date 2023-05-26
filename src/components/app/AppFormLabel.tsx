@@ -28,7 +28,7 @@ export default function AppFormLabel(props: Props) {
       { props.children }
       {/* Required Sign */}
       { props.required && 
-          (<span className="text-error-500">*</span> ) 
+          (<span className="text-error-500"> * </span> ) 
       }
     </label>
   )

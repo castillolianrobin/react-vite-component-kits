@@ -7,5 +7,10 @@ expect.extend(matchers);
 
 // runs a cleanup after each test case (e.g. clearing jsdom)
 afterEach(() => {
-  cleanup();
+  // if (
+  //   !browser.meta.name.includes('[SKIP-CLEANUP]') )
+  //  {
+  //   console.log('CLEANING UP') 
+    cleanup();
+  //  } else { console.log('Skipping Clean up at' + browser.meta.name)}
 });

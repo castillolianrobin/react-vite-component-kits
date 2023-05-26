@@ -6,7 +6,8 @@ export type * as ValidationTypes from './validation/index';
 /** THEMED COLOR HOOK */
 export { useThemedColor, useCreateThemedColor } from './themedColor';
 export type * as ThemedColorTypes from './themedColor';
+/**  Click OUTSIDE HOOK */
+export { useClickOutside } from './onClickOutside'
 
 // deprecated
-// export type { Validation, Validations, FormErrors, FormValidation } from './validation'
 export { default as usePortal } from './usePortal';

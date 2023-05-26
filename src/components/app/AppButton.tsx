@@ -86,7 +86,7 @@ export default function AppBtn(props: Props) {
 
 /** __TYPE DEFINITIONS__ */
 
-interface Props extends ButtonHTMLAttributes<unknown> {
+export interface Props extends ButtonHTMLAttributes<unknown> {
   color?: ThemedColorTypes.ThemeColors;
   loading?: boolean;
   size?:'lg' | 'md' | 'sm';
