@@ -1,4 +1,5 @@
-import { AppButton, AppCard, AppDropdown, AppDropdownTypes } from "@/components/app";
+// Components
+import { AppButton, AppCard, AppDropdown, type AppDropdownTypes } from "@/components/app";
 import { ComponentCard, PageHeader } from "../components";
 
 
