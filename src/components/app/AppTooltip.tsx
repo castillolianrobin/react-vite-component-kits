@@ -3,6 +3,7 @@ import { useState, type HtmlHTMLAttributes, ReactNode } from 'react';
 import { InformationCircleIcon } from '@heroicons/react/24/solid'
 // Hooks
 import { type ThemedColorTypes, useThemedColor } from '@/hooks';
+import { AnimatePresence, motion } from 'framer-motion';
 
 
 export default function AppTooltip(props: Props) {
@@ -78,48 +79,54 @@ export default function AppTooltip(props: Props) {
       }
 
       {/* Tooltip Element */}
-      {
-        !hovered 
-          ? (<></>)
-          : (<div
-            className={ `absolute ${ tooltipContainerDirectionClass() }` }
-            role="tooltip"
-          >
-            <div
-              className={`
-                absolute
-                flex justify-center
-                ${ arrowPositionClass() }
-
-              `}
+      <AnimatePresence initial={false} mode='wait'>
+        {
+          !hovered 
+            ? null
+            : (<motion.div
+              initial={{ opacity: 0 }}
+              exit={{ opacity: 0 }}
+              animate={{ opacity: 1 }} 
+              transition={{ duration: 0.15 }}
+              className={ `absolute ${ tooltipContainerDirectionClass() }` }
+              role="tooltip"
             >
-              {/* Arrow */}
               <div
                 className={`
-                  w-0 h-0
-                  border-${color}
-                  ${ arrowDirectionClass() }
+                  absolute
+                  flex justify-center
+                  ${ arrowPositionClass() }
+
                 `}
-              ></div>
-            </div>  
-            {/* Text */}
-            <label
-              className={ `
-                block
-                p-1 m-1.5
-                rounded
-                min-w-max
-                shadow 
-                sticky left-0
-                bg-${color}
-                text-white text-xs
-              ` }
-            >
-              {/* Tooltip Slot */}
-              { props.tooltipText }
-            </label>
-          </div>)
-      }
+              >
+                {/* Arrow */}
+                <div
+                  className={`
+                    w-0 h-0
+                    border-${color}
+                    ${ arrowDirectionClass() }
+                  `}
+                ></div>
+              </div>  
+              {/* Text */}
+              <label
+                className={ `
+                  block
+                  p-1 m-1.5
+                  rounded
+                  min-w-max
+                  shadow 
+                  sticky left-0
+                  bg-${color}
+                  text-white text-xs
+                ` }
+              >
+                {/* Tooltip Slot */}
+                { props.tooltipText }
+              </label>
+            </motion.div>)
+        }
+      </AnimatePresence>
     </div>
   )
 }

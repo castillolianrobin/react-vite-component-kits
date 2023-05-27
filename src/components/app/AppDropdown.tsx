@@ -80,9 +80,8 @@ export default function AppDropdown(props: Props) {
       {/* Dropdown Items */}
       <AnimatePresence initial={false} mode='wait'>
         {
-          !isActive 
-            ? (<></>)
-            : (<motion.div 
+          isActive && (<motion.div
+              key={'dropdown-item'} 
               initial={{ opacity: 0 }}
               exit={{ opacity: 0, translateY: -2 }}
               animate={{ opacity: 1, translateY: 2 }} 

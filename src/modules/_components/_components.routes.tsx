@@ -23,6 +23,11 @@ const componentRoutes: ComponentRoutes[] = [
     element: lazyLoadRoute(() => import(`./pages/TooltipPage`)),
   },
   {
+    label: 'Tabs',
+    path: 'tabs',
+    element: lazyLoadRoute(() => import(`./pages/TabsPage`)),
+  },
+  {
     label: 'Form Validation',
     path: 'form/validation',
     element: lazyLoadRoute(() => import(`./pages/FormPage`)),
