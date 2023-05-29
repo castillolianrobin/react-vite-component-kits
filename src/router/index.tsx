@@ -2,6 +2,7 @@ import { RouteObject, createBrowserRouter } from "react-router-dom";
 import App from '../App';
 import componentRoutes from "@/modules/_components/_components.routes";
 import LayoutDashboardComponent from "@/layout/LayoutDashboardComponent";
+import HomePage from "@/pages/public/HomePage";
 
 const routes:RouteObject[] = [
   {
@@ -13,10 +14,10 @@ const routes:RouteObject[] = [
         element: <LayoutDashboardComponent />,
         children: [ ...componentRoutes ],
       },    
-      // {
-      //   path: '/',
-      //   element: lazyLoadRoute(() => import(`../pages/public/LoginPage`)),
-      // },
+      {
+        path: '/',
+        element: <HomePage />,
+      },
     ],
   },
 ];
