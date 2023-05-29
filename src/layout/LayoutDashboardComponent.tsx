@@ -56,7 +56,7 @@ function TopBar() {
     >
       {/* Github Link */}
       <a 
-        href="https://github.com/castillolianrobin/vue-vite-component-kits/"
+        href="https://github.com/castillolianrobin/react-vite-component-kits/"
         className="p-1 rounded-full bg-secondary-50 hover:underline"
         target="_blank"
       >  

@@ -167,11 +167,11 @@ export default function HomePage() {
           </a>
 
           <AppButton
+            disabled
             size="lg"
             variant="outline"
             color="secondary-400"
             className="flex-shrink sm:w-1/3"
-            disabled
             // :to="{ name: 'Login'}"
             // target="_blank"
           >
