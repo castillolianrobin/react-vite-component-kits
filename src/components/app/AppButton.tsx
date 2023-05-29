@@ -58,6 +58,7 @@ export default function AppBtn(props: Props) {
       { ...buttonProps() }
       className={`
         relative
+        flex items-center justify-center 
         rounded border-2
         transition
         disabled:opacity-75
