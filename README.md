@@ -1,6 +1,6 @@
-# Vue 3 Component Kits [Vue 3 Composition API | Typescript | Tailwind]
+# React Component Kits [React 18 | Typescript | Tailwind]
 
-A set of vue components utilizing Tailwind CSS with the intention to improve the acceleration of development by providing reusable components similar to Vuetify but with the flexibility of Tailwind.
+A set of react components utilizing Tailwind CSS with the intention to improve the acceleration of development by providing reusable components similar to Vuetify but with the flexibility of Tailwind.
 
 The components are customizable and themeable, specially in colors. All the components uses custom colors declared in the tailwind config (primary, secondary, info, alert, error, success). The components itself are also flexible via props which would lessen the need to customize the component codebase.
 
