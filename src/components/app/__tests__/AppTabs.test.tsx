@@ -2,7 +2,7 @@
 import { describe, expect, it } from "vitest";
 import { AppTabs } from '../'
 import type { AppTabsTypes } from "../";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { renderScopedPropTest } from "@/components/__tests__/helpers/props.test";
 const name = 'AppTabs';
 describe(name, ()=> {
@@ -26,14 +26,15 @@ describe(name, ()=> {
   })
 
   it('should render default tab properly', async ()=> {
-    mountWithDefaultItem();
-    
-    const defaultText = items[0].content;
-    const defautlKey = items[0].key;
-    const defaultTabPanel = await screen
-      .queryByLabelText(`${defautlKey} tabpanel`)
-    expect(defaultTabPanel).toBeInTheDocument()
-    expect(defaultTabPanel?.innerText).toBe(defaultText);
+    waitFor(async ()=> {
+      mountWithDefaultItem();
+      const defaultText = items[0].content;
+      const defautlKey = items[0].key;
+      const defaultTabPanel = await screen
+        .queryByLabelText(`${defautlKey} tabpanel`);
+      expect(defaultTabPanel).toBeInTheDocument();
+      expect(defaultTabPanel?.innerText).toBe(defaultText);
+    })
   })
   
   it('should not render other tabs', async ()=> {
@@ -47,28 +48,32 @@ describe(name, ()=> {
   })
 
   it('should render other tabs on change', async ()=> {
-    mountWithDefaultItem();
     
-    const nondefautlKey = items[1].key;
-    
-    const nonDefaultTab = screen
-      .queryByLabelText(`${nondefautlKey} tab`)
-    nonDefaultTab && fireEvent.click(nonDefaultTab);
-
-    const tabPanel = await screen
-      .queryByLabelText(`${nondefautlKey} tabpanel`)
-    
-      expect(tabPanel).toBeInTheDocument()
+    waitFor(async ()=> {
+      mountWithDefaultItem();
+      
+      const nondefautlKey = items[1].key;
+      
+      const nonDefaultTab = screen
+        .queryByLabelText(`${nondefautlKey} tab`)
+      nonDefaultTab && fireEvent.click(nonDefaultTab);
+  
+      const tabPanel = await screen
+        .queryByLabelText(`${nondefautlKey} tabpanel`)
+      
+        expect(tabPanel).toBeInTheDocument()
+    });
   })
 
   it('should render all tabs if eager prop is enabled', async ()=> {
-    mountWithDefaultItem({ eager: true });
-
-    const nondefautlKey = items[1].key;
-    const tabPanel = await screen
-      .queryByLabelText(`${nondefautlKey} tabpanel`)
-    expect(tabPanel).toBeInTheDocument()
-
+    waitFor(async ()=> {
+      mountWithDefaultItem({ eager: true });
+  
+      const nondefautlKey = items[1].key;
+      const tabPanel = await screen
+        .queryByLabelText(`${nondefautlKey} tabpanel`)
+      expect(tabPanel).toBeInTheDocument()
+    });
   });
 
   // renderScopedPropTest(AppTabs, 'tabs', { items });

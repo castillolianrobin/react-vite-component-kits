@@ -81,9 +81,7 @@ export default function AppTooltip(props: Props) {
       {/* Tooltip Element */}
       <AnimatePresence initial={false} mode='wait'>
         {
-          !hovered 
-            ? null
-            : (<motion.div
+          hovered && (<motion.div
               initial={{ opacity: 0 }}
               exit={{ opacity: 0 }}
               animate={{ opacity: 1 }} 
