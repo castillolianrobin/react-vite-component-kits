@@ -1,5 +1,6 @@
+import { AppButton } from "@/components/app"
 import componentRoutes from "@/modules/_components/_components.routes"
-import { HtmlHTMLAttributes, } from "react"
+import { HtmlHTMLAttributes, useState, } from "react"
 import { NavLink, Outlet } from "react-router-dom"
 
 
@@ -79,7 +80,7 @@ function TopBar() {
 }
 
 function SideBar(props: SideBarProps) {
-  
+  const [isActive, setIsActive] = useState(false)
   return (
     <div
       className={`
@@ -92,29 +93,32 @@ function SideBar(props: SideBarProps) {
         ${ props.className }
       `}
     >
+      {/* Mobile Hamburger Button */}
       <div className="p-1 flex-shrink-0 md:sr-only z-20 shadow-md">
-        {/* <AppButton 
+        <AppButton
           variant="outline"
           size="sm"
-          class="px-0.5"
+          className="px-0.5"
           color="white"
-          @click="active = !active"
+          onClick={ ()=>setIsActive(!isActive) }
         >
-          {{ active ? '&lsaquo;' : '&rsaquo;'  }}
-        </AppButton> */}
+          { isActive 
+            ? (<>&lsaquo;</>) 
+            : <>&rsaquo;</> 
+          }
+        </AppButton>
       </div>
+
+      {/* Main Side Navigation */}
       <aside 
-          className="
+          className={`
             transition-all
             md:w-screen max-w-[250px] h-full 
             overflow-auto
             absolute md:relative left-full md:left-0  
             bg-inherit
-          "
-          // :class="{
-          //   'w-0': !active,
-          //   'w-screen': active,
-          // }"
+            ${ isActive ? 'w-screen' : 'w-0' }
+          `}
         >
 
           <ul className="mt-5">
@@ -137,7 +141,7 @@ function SideBar(props: SideBarProps) {
                         : 'border-primary-500/0' 
                     }
                   `}
-                  // @click="active = false"
+                  onClick={()=>setIsActive(false)}
                 >
                   { nav.label }
                 </NavLink>
