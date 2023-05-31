@@ -28,7 +28,7 @@ const componentRoutes: ComponentRoutes[] = [
     element: lazyLoadRoute(() => import(`./pages/TabsPage`)),
   },
   {
-    label: 'Steps',
+    label: 'Steppers',
     path: 'steps',
     element: lazyLoadRoute(() => import(`./pages/StepsPage`)),
   },
