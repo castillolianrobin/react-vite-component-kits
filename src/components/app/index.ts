@@ -12,6 +12,7 @@ export { default as AppFormInputContainer, type AppFormInputContainerProps } fro
 // export * as AppFormInputContainerExtras from './AppFormInputContainer';
 export { default as AppFormLabel } from './AppFormLabel';
 export { default as AppLoading } from './AppLoading';
+export { default as AppSteps } from './AppSteps';
 export { default as AppTabs } from './AppTabs';
 export type * as AppTabsTypes from './AppTabs';
 export { default as AppTooltip } from './AppTooltip';
