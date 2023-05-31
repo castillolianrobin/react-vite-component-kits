@@ -23,7 +23,7 @@ export default function DropdownPage() {
         {/* Default Dropdown */}
         <ComponentCard title="Default Dropdown">
           <div className="flex flex-wrap justify-center gap-4">
-            <AppDropdown items={ dropdownItems }></AppDropdown>
+            <AppDropdown eager items={ dropdownItems }></AppDropdown>
           </div>
         </ComponentCard>
 

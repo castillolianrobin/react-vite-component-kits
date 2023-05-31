@@ -26,16 +26,16 @@ describe(name, ()=> {
   })
 
   it('should render default tab properly', async ()=> {
-    waitFor(async ()=> {
-      mountWithDefaultItem();
-      const defaultText = items[0].content;
-      const defautlKey = items[0].key;
-      const defaultTabPanel = await screen
-        .queryByLabelText(`${defautlKey} tabpanel`);
+    mountWithDefaultItem();
+    const defaultText = items[0].content;
+    const defautlKey = items[0].key;
+    const defaultTabPanel = await screen
+    .queryByLabelText(`${defautlKey} tabpanel`);
+    await waitFor(async ()=> {
       expect(defaultTabPanel).toBeInTheDocument();
-      expect(defaultTabPanel?.innerText).toBe(defaultText);
+      expect(defaultTabPanel?.textContent).toBe(defaultText);
     })
-  })
+  }, { timeout: 2000 })
   
   it('should not render other tabs', async ()=> {
     mountWithDefaultItem();
@@ -49,24 +49,24 @@ describe(name, ()=> {
 
   it('should render other tabs on change', async ()=> {
     
-    waitFor(async ()=> {
-      mountWithDefaultItem();
-      
-      const nondefautlKey = items[1].key;
-      
-      const nonDefaultTab = screen
-        .queryByLabelText(`${nondefautlKey} tab`)
-      nonDefaultTab && fireEvent.click(nonDefaultTab);
-  
+    mountWithDefaultItem();
+    
+    const nondefautlKey = items[1].key;
+    
+    const nonDefaultTab = screen
+    .queryByLabelText(`${nondefautlKey} tab`)
+    nonDefaultTab && fireEvent.click(nonDefaultTab);
+    
+    await waitFor(async ()=> {
       const tabPanel = await screen
-        .queryByLabelText(`${nondefautlKey} tabpanel`)
-      
-        expect(tabPanel).toBeInTheDocument()
+      .queryByLabelText(`${nondefautlKey} tabpanel`)
+    
+      expect(tabPanel).toBeInTheDocument()
     });
   })
 
   it('should render all tabs if eager prop is enabled', async ()=> {
-    waitFor(async ()=> {
+    await waitFor(async ()=> {
       mountWithDefaultItem({ eager: true });
   
       const nondefautlKey = items[1].key;

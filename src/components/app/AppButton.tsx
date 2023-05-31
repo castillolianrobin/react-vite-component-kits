@@ -56,6 +56,7 @@ export default function AppBtn(props: Props) {
   return (
     <button
       { ...buttonProps() }
+      tabIndex={ props.to ? -1 : 0 }
       className={`
         relative
         flex items-center justify-center 
@@ -113,3 +114,83 @@ export interface Props extends ButtonHTMLAttributes<unknown> {
 
 
 // type ConditionalExtendProp = ButtonHTMLAttributes<unknown>
+
+// const item: ItemProp<'input'> = {
+//     config: { va }
+// }
+
+
+
+
+
+// function setItem<T extends ItemType>(item: ItemProp<T>[]) {
+//   return item.map(({ config })=>config);
+// }
+
+// const config = setItem([{ 
+//   title: 'asd',
+//   type: 'multi',
+//   config: { test: 'asd' }
+//  },
+//  {
+//   title: 'asd',
+//   type: 'input',
+//   config: { value: 'asd' },
+//  },
+//  newItem({
+//   title: 'asd',
+//   type: 'input',
+//   config: { value: 'asdasd' }
+//  }),
+//  newItem({
+//   title: 'asd',
+//   type: 'multi',
+//   config: { test: 'asdasd' }
+//  })
+// ])
+
+// resetItem()
+// .newItem({
+//   title: 'asd',
+//   type: 'multi',
+//   config: { test: 'asdasd' }
+//  })
+//  ,newItem({
+//   title: 'asd',
+//   type: 'multi',
+//   config: { test: 'asdasd' }
+//  })
+//  ,newItem({
+//   title: 'asd',
+//   type: 'multi',
+//   config: { test: 'asdasd' }
+//  })
+
+// function newItem<T extends ItemType>(item: ItemProp<T>) {
+//   return item;  
+// }
+
+// //  config.
+ 
+
+
+
+// type ItemType = 'input' | 'multi' | 'asd';
+// interface ItemProp<T extends ItemType> {
+//   title?: string;
+//   type: T;
+//   config?:  Config<T>;
+// }
+
+// type Config<T extends ItemType> = 
+//   T extends 'input' ? InputType : MultiType 
+
+
+// type InputType = {
+//   value: string;
+// }
+
+
+// type MultiType = {
+//   test: string;
+// }
