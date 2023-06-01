@@ -2,7 +2,7 @@
 import { fireEvent, screen } from "@testing-library/react";
 import { describe, } from "vitest";
 // import { namedSlotTest } from '../../__tests__/helpers/slot.spec';
-import { AppFormInput as Component } from '..';
+import { AppFormTextArea as Component } from '..';
 import { inputTest } from "@/components/__tests__/helpers/form.test";
 import { renderPropTest } from "@/components/__tests__/helpers/props.test";
 

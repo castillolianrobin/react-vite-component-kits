@@ -5,19 +5,19 @@ IT WILL RERENDER ANYWAY
 
 - AppButton [DONE] [TESTED] [PAGED]
 ~ AppForm [PARTIALLY DONE] [TESTED] [PAGED] 
-1 AppFormInput 
-3 AppFormCheckbox [DONE] [SEMI TESTED] [PAGED]
-4 AppFormCheckboxGroup [DONE] [TESTED] [PAGED]
-5 AppFormRadio [DONE] [SEMI TESTED] [PAGED]
-6 AppFormRadioGroup [DONE] [TESTED] [PAGED]
-7 AppFormSelect [DONE] [TESTED] [PAGED]
-8 AppFormTextArea [DONE] [TESTED] [PAGED]
-9 AppFormMultiSelect [PARTIALLY DONE] [TESTED] [PAGED] --- EMPTY STATE
-10 AppFormFile [DONE] [TESTED] [PAGED]
+- AppFormInput 
+1 AppFormCheckbox [DONE] [SEMI TESTED] [PAGED]
+2 AppFormCheckboxGroup [DONE] [TESTED] [PAGED]
+3 AppFormRadio [DONE] [SEMI TESTED] [PAGED]
+4 AppFormRadioGroup [DONE] [TESTED] [PAGED]
+~ AppFormSelect [DONE] [UNTESTED] [PAGED]
+- AppFormTextArea [DONE] [TESTED] [PAGED]
+~ AppFormMultiSelect [PARTIALLY DONE] [UNTESTED] [PAGED] --- EMPTY STATE
+5 AppFormFile [DONE] [TESTED] [PAGED]
 ~ AppFormDatePicker (POSTPONED)
-11 AppModal [DONE] [PAGED]
-12 AppPagination  [DONE] [TESTED] [PAGED]
-13 AppTable [DONE] [TESTED] [PAGED]
+- AppModal [DONE] [PAGED]
+6 AppPagination  [DONE] [TESTED] [PAGED]
+7 AppTable [DONE] [TESTED] [PAGED]
 - AppCards [PARTIALLY DONE] [TESTED] [PAGED]
 - AppDropdown [DONE] [TESTED] [PAGED] 
 
@@ -25,7 +25,7 @@ IT WILL RERENDER ANYWAY
 - PageLoader
 - AppTooltip [DONE] [TESTED] [PAGED]
 - AppSteps DONE] [TESTED] [PAGED]
-1 AppChip
+9 AppChip
 
 - Login (Cypress Test) (API)
 - Use Creation (Steps) (Cypress Test)

@@ -60,7 +60,7 @@ export default function AppDropdown(props: Props) {
   
   return (
     <div 
-      ref={dropdownRef} 
+      ref={ dropdownRef } 
       className="relative inline-block"
     >
       {/* Dropdown Trigger */}

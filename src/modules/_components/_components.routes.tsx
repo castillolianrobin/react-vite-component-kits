@@ -52,6 +52,17 @@ const componentRoutes: ComponentRoutes[] = [
     path: 'form/input',
     element: lazyLoadRoute(() => import(`./pages/FormInputPage`)),
   },
+  {
+    label: 'Form Select',
+    path: 'form/select',
+    element: lazyLoadRoute(() => import(`./pages/SelectPage`)),
+  },
+  
+  {
+    label: 'Form Checbox & Radio',
+    path: 'form/checkbox-radio',
+    element: lazyLoadRoute(() => import(`./pages/FormRadioPage`)),
+  },
 ];
 
 export default componentRoutes;

@@ -15,7 +15,7 @@ export default function AppFormInputContainerMain(props: Props) {
   }
   
   return (
-    <div 
+    <div
       className={`group dark:text-secondary-100`}
     >
       {/* Label */}
@@ -78,10 +78,10 @@ export function InputInsertable(props: InputInsertableProps) {
 
 
 /** __TYPE DEFINITIONS__ */
+// export type test = ClassAttributes<HTMLDivElement>['']
+interface Props extends ExtendableProps, Omit<HtmlHTMLAttributes<unknown>, "color"> {}
 
-interface Props extends AppFormInputContainerProps, Omit<HtmlHTMLAttributes<unknown>, "color"> {}
-
-export interface AppFormInputContainerProps {
+export interface ExtendableProps {
   disabled?: boolean;
   required?: boolean;
   label?: string;

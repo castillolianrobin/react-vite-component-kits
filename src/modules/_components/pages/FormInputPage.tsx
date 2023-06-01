@@ -1,6 +1,6 @@
 import { useState } from "react";
 // Components
-import { AppFormInput } from "@/components/app";
+import { AppFormInput, AppFormTextArea } from "@/components/app";
 import ComponentCard from "../components/ComponentCard";
 // Hooks
 import { ThemedColorTypes } from "@/hooks";
@@ -18,7 +18,7 @@ export default function FormInputPage() {
   const [defaultInput, setDefaultInput] = useState('');
   const [PasswordInput, setPasswordInput] = useState('');
   const [NumberInput, setNumberInput] = useState(0);
-  // const [defaultTextArea, setDefaultTextArea] = useState('');
+  const [defaultTextArea, setDefaultTextArea] = useState('');
   
   
   return (
@@ -73,7 +73,30 @@ export default function FormInputPage() {
             }
           </div>
         </ComponentCard>
-      </div>      
+      </div>
+
+      <ComponentCard title="Text Areas">
+          <div className="grid md:grid-cols-3 gap-4">
+            {
+              [inputs[0],inputs[4]].map((input, index)=>(
+                <AppFormTextArea
+                  value={ defaultTextArea }
+                  onValueChange={ setDefaultTextArea }
+                  v-for="(input, index) in [inputs[0],inputs[4]]"
+                  key={ `textarea-${index}` }
+                  { ...input }
+                ></AppFormTextArea>
+              ))
+            }
+
+            <AppFormTextArea
+              disableResize
+              value={ defaultTextArea }
+              onValueChange={ setDefaultTextArea }
+              label="No Resize"
+            ></AppFormTextArea>
+          </div>
+      </ComponentCard>      
     </div>
   )
 }
