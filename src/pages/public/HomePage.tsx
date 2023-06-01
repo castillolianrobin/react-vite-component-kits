@@ -143,7 +143,7 @@ export default function HomePage() {
             size="lg"
             color="primary-500"
             className="flex-shrink w-2/3 sm:w-1/3"
-            to={ '/_component/cards' }
+            to={ '/_component/home' }
             linkProps={{ target: '_blank' }}
             // target="_blank"
           >

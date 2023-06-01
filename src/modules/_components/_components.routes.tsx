@@ -3,6 +3,11 @@ import { lazyLoadRoute } from "@/router/RouteLazy";
 
 const componentRoutes: ComponentRoutes[] = [
   {
+    label: 'Home',
+    path: 'home',
+    element: lazyLoadRoute(() => import(`./pages/HomePage`)),
+  },
+  {
     label: 'Cards',
     path: 'cards',
     element: lazyLoadRoute(() => import(`./pages/CardPage`)),
