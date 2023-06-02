@@ -7,6 +7,7 @@ export { default as AppForm } from './AppForm';
 export { default as AppFormCheckbox } from './AppFormCheckbox';
 export { default as AppFormCheckboxGroup } from './AppFormCheckboxGroup';
 export { default as AppFormError } from './AppFormError';
+export { default as AppFormFile } from './AppFormFile';
 export { default as AppFormInput } from './AppFormInput';
 export { default as AppFormInputContainer } from './AppFormInputContainer';
 export type * as AppFormInputContainerTypes from './AppFormInputContainer';

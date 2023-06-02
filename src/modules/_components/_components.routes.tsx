@@ -57,11 +57,15 @@ const componentRoutes: ComponentRoutes[] = [
     path: 'form/select',
     element: lazyLoadRoute(() => import(`./pages/SelectPage`)),
   },
-  
   {
     label: 'Form Checbox & Radio',
     path: 'form/checkbox-radio',
     element: lazyLoadRoute(() => import(`./pages/FormRadioPage`)),
+  },
+  {
+    label: 'Form File Upload',
+    path: 'form/file-upload',
+    element: lazyLoadRoute(() => import(`./pages/FormFilePage`)),
   },
 ];
 

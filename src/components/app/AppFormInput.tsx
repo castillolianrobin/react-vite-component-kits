@@ -8,7 +8,7 @@ import type { ThemedColorTypes, ValidationTypes } from "@/hooks";
 import { objectHelper } from "@/helpers";
 
 export default function AppFormInput(props: Props) {
-  /** Validations */
+  /** Validations Hook */
   const { validateOnChange, errorMessage, isRequired } 
     = useFormValidation(props.value, props.validations || [], props.name)
   
