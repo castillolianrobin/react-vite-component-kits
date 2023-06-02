@@ -13,17 +13,17 @@ const componentRoutes: ComponentRoutes[] = [
     element: lazyLoadRoute(() => import(`./pages/CardPage`)),
   },
   {
-    label: 'Button',
+    label: 'Buttons',
     path: 'buttons',
     element: lazyLoadRoute(() => import(`./pages/ButtonPage`)),
   },
   {
-    label: 'Dropdown',
+    label: 'Dropdowns',
     path: 'dropdowns',
     element: lazyLoadRoute(() => import(`./pages/DropdownPage`)),
   },
   {
-    label: 'Tooltip',
+    label: 'Tooltips',
     path: 'tooltips',
     element: lazyLoadRoute(() => import(`./pages/TooltipPage`)),
   },
@@ -33,12 +33,12 @@ const componentRoutes: ComponentRoutes[] = [
     element: lazyLoadRoute(() => import(`./pages/TabsPage`)),
   },
   {
-    label: 'Steppers',
+    label: 'Stepper',
     path: 'steps',
     element: lazyLoadRoute(() => import(`./pages/StepsPage`)),
   },
   {
-    label: 'Modal',
+    label: 'Modals',
     path: 'modal',
     element: lazyLoadRoute(() => import(`./pages/ModalPage`)),
   },

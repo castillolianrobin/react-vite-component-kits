@@ -11,8 +11,8 @@ export default function AppFormLabel(props: Props) {
     }
   };
   
-  return (
-    <label 
+  return props.children 
+    ? (<label 
       { ...props }
       htmlFor={ props.name }
       className={`
@@ -22,7 +22,6 @@ export default function AppFormLabel(props: Props) {
         ${ props.className }
         ${ textSizeClass() }
         ${ props.disabled ? 'text-secondary-400' : '' } 
-        group-focus-within:text-${ props.color }
       `}
     >
       { props.children }
@@ -30,8 +29,8 @@ export default function AppFormLabel(props: Props) {
       { props.required && 
           (<span className="text-error-500"> * </span> ) 
       }
-    </label>
-  )
+    </label>)
+    : (<></>)
 }
 
 

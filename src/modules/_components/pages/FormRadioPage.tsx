@@ -1,6 +1,6 @@
 import { useState } from "react";
 // Components
-import { AppFormCheckbox, AppFormRadio, AppFormRadioGroup } from "@/components/app";
+import { AppButton, AppFormCheckbox, AppFormCheckboxGroup, AppFormRadio, AppFormRadioGroup } from "@/components/app";
 import { ComponentCard, PageHeader } from "../components";
 import { ThemedColorTypes, ValidationTypes } from "@/hooks";
 
@@ -13,7 +13,7 @@ export default function FormRadioPage() {
     { label: 'With Validations', validations: 'required' },
   ]
   const [checkBox, setCheckBox] = useState(false);
-  const [checkBoxGroup, setCheckBoxGroup ] = useState([]);
+  const [checkBoxGroup, setCheckBoxGroup ] = useState<(string | false)[]>([]);
   
   const checkItems = [
     { label: 'Eat Dinner', value: 'ate' },
@@ -42,16 +42,70 @@ export default function FormRadioPage() {
                 key={ `default-${index}` }
                 className="flex justify-center"
               >
-                <AppFormCheckbox 
+                <AppFormCheckbox  
                   value={ checkBox }
                   onValueChange={ setCheckBox }
-                  type="number"
                   { ...input }
                 ></AppFormCheckbox>
               </div>
             ))}
           </div>
       </ComponentCard>
+
+      {/* Custom Checkbox */}
+      <ComponentCard title="Custom Checkboxes">
+        <div className="grid md:grid-cols-2 gap-4 items-center">
+          <div className="flex justify-center">
+            <AppFormCheckbox
+              toggleInput
+              value={ checkBox }
+              onValueChange={ setCheckBox }
+              label="Custom Checkbox 1"
+            >
+            </AppFormCheckbox>
+          </div>
+          <div className="flex justify-center">
+            <AppFormCheckbox
+              value={ checkBox }
+              onValueChange={ setCheckBox }
+              label="Custom Checkbox 2"
+              className="items-center"
+              checkbox={ ({ isActive }) => (
+                <AppButton
+                  color={ isActive ? 'primary-500' : 'secondary-500' }
+                >
+                  {  isActive ? 'Active' : 'Inactive'  }
+                </AppButton>
+              ) }
+            >
+            </AppFormCheckbox>
+          </div>
+        </div>
+      </ComponentCard>
+
+      {/* Chekcbox Group */}
+      <ComponentCard title="Checkbox Group">
+          <div className="grid md: grid-cols-2 gap-4 items-center">
+            <div className="flex justify-center">
+              <AppFormCheckboxGroup
+                value={ checkBoxGroup }
+                onValueChange={ setCheckBoxGroup }
+                items={ checkItems }
+                label="To do"
+                className="mx-auto"
+                containerClass="flex-col md:flex-row"
+              ></AppFormCheckboxGroup>
+            </div>
+
+            <div className="text-center">
+              <span>Done: </span>
+              <span className="text-primary-500 font-semibold">
+                { checkBoxGroup.join(', ') }
+              </span>
+            </div>
+          </div>
+      </ComponentCard>
+
 
 
       {/* Default Radio Button */}

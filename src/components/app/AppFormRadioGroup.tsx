@@ -1,6 +1,8 @@
-import { ThemedColorTypes, ValidationTypes, useFormValidation } from "@/hooks";
 import { InputHTMLAttributes, ReactNode } from "react";
+// Components
 import { AppFormError, AppFormLabel, AppFormRadio } from ".";
+// Hooks
+import { ThemedColorTypes, ValidationTypes, useFormValidation } from "@/hooks";
 
 export default function AppFormRadioGroup<T>(props: Props<T>) {
   /** Form Validation Hook */
@@ -37,7 +39,7 @@ export default function AppFormRadioGroup<T>(props: Props<T>) {
         {/* v-for="item, i in props.items" */}
         { props.items.map((item, i)=>(
           <AppFormRadio
-            key="i"
+            key={ i }
             color={ props.color }
             activeValue={ item.value }
             label={ item.label }
@@ -56,6 +58,8 @@ export default function AppFormRadioGroup<T>(props: Props<T>) {
   )
 }
 
+
+/** __TYPE DEFINITIONS__ */
 
 interface Props <T> extends Omit<InputHTMLAttributes<unknown>, 'value'> {
   value: T;

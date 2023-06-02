@@ -5,7 +5,7 @@ export { default as AppDropdown } from './AppDropdown';
 export type * as AppDropdownTypes from './AppDropdown';
 export { default as AppForm } from './AppForm';
 export { default as AppFormCheckbox } from './AppFormCheckbox';
-// export { default as AppFormCheckboxGroup } from './AppFormCheckboxGroup';
+export { default as AppFormCheckboxGroup } from './AppFormCheckboxGroup';
 export { default as AppFormError } from './AppFormError';
 export { default as AppFormInput } from './AppFormInput';
 export { default as AppFormInputContainer } from './AppFormInputContainer';

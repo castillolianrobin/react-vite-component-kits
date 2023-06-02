@@ -1,8 +1,7 @@
 import { ThemedColorTypes, ValidationTypes, useFormValidation, useThemedColor } from "@/hooks";
 import { InputHTMLAttributes, KeyboardEvent, ReactNode } from "react";
 import { AppFormError, AppFormLabel } from ".";
-// import { useThemedColor } from "../../utils/useThemedColor";
-
+import { objectHelper } from "@/helpers";
 
 export default function AppFormRadio<T>(props: Props<T>) {
   
@@ -15,7 +14,14 @@ export default function AppFormRadio<T>(props: Props<T>) {
   
 
   /** Radio Button Logic */
-  
+
+  // Props to be mounted to container div 
+  const containerProps = objectHelper.deleteProperties(
+    props,
+    [ 'onValueChange', 'validations', 'value',  'radio', 'activeValue',]
+  );
+
+
   // value to check whether the state is active or not
   const activeValue = props.activeValue || props.label || true;
   const isActive = props.value === activeValue;
@@ -23,11 +29,12 @@ export default function AppFormRadio<T>(props: Props<T>) {
   /** Handles The input event of main input element*/
   function onChangeHandler(){
     const inputValue = activeValue;
+    validateOnChange(true);
     props.onValueChange && props.onValueChange(inputValue as T);
   }
 
   /** Handles The KEYDOWN event of main input element*/
-  function onKeyDownHanlder(e?: KeyboardEvent){
+  function onKeyDownHandler(e?: KeyboardEvent){
     if (e?.type === 'keydown' && ![' ', 'Enter'].includes(e.key)) return; 
     
     onChangeHandler();
@@ -51,9 +58,10 @@ export default function AppFormRadio<T>(props: Props<T>) {
   return (
     <div className="inline dark:text-secondary-100">
       <div 
-        { ...props }
+        { ...containerProps }
         className={ `
           flex flex-nowrap flex-row gap-1
+          ${ props.className }
           ${ !props.disabled ? 'group cursor-pointer' : '' }
         ` }
         aria-disabled={ props.disabled }
@@ -80,7 +88,7 @@ export default function AppFormRadio<T>(props: Props<T>) {
                   transition-[outline] ease-in-out duration-75
                   ${ props.disabled ? 'border-secondary-400' : '' }
                 ` }
-                onKeyDown={ onKeyDownHanlder }    
+                onKeyDown={ onKeyDownHandler }    
               >
                 <div
                   className={ `

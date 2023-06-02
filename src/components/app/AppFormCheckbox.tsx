@@ -1,15 +1,30 @@
 import { ThemedColorTypes, ValidationTypes, useFormValidation, useThemedColor } from "@/hooks";
 import { InputHTMLAttributes, KeyboardEvent, ReactNode } from "react";
 import { AppFormError, AppFormLabel } from ".";
+import { objectHelper } from "@/helpers";
 
 export default function AppFormCheckbox<T>(props: Props<T>) {
+  
   /** Form Validation Hook */
   const { validateOnChange, errorMessage, isRequired } 
     = useFormValidation(props.value, props.validations || [], props.name)
 
+  /** Themed Color Hook */
+  const { color } = useThemedColor(props.color);
+
+
+
+  /** Internal Logic */
+
+  // Props to be mounted to container div 
+  const containerProps = objectHelper.deleteProperties(
+    props,
+    [ 'onValueChange', 'validations', 'value', 'toggleInput', 'checkbox', 'activeValue', 'inactiveValue']
+  );
+
 
   // value to check whether the state is active or not
-  const activeValue = props.activeValue || props.label || true;
+  const activeValue = props.activeValue  || true || props.label;
   const inactiveValue = props.inactiveValue === undefined ? props.inactiveValue : false;
 
   const isActive = ()=>props.value === activeValue;
@@ -33,29 +48,30 @@ export default function AppFormCheckbox<T>(props: Props<T>) {
     onChangeHandler();
   }
 
-  /** Themed Color Hook */
-  const { color } = useThemedColor(props.color);
-
-
   return (
-    <div className="inline dark:text-secondary-100">
+    <div className="inline dark:text-secondary-100 ">
       <div 
+        { ...containerProps }
         className={ `
           flex gap-1 flex-nowrap
+          ${ props.className }
           ${!props.disabled ? 'group cursor-pointer' : ''}
         ` }
         aria-checked={ isActive() }
         aria-disabled={ props.disabled }
         role="checkbox"
         onClick={ onChangeHandler }
-        // { ...props }
       >
         {/* Checkbox Button */}
-        
-        {/* <slot name="checkbox" v-bind="{ isActive, disabled, onChangeHandler, color }">
-        </slot> */}
         { props.checkbox 
-            ? typeof props.checkbox  === 'function' ? props.checkbox({isActive, disabled: props.disabled, color }) : props.checkbox
+            ? typeof props.checkbox  === 'function' 
+              ? props.checkbox({ 
+                  isActive, 
+                  disabled: props.disabled, 
+                  color, 
+                  onChangeHandler 
+                }) 
+              : props.checkbox
             // <!-- Toggle Style -->
             : props.toggleInput 
               ? (<div 
@@ -70,11 +86,12 @@ export default function AppFormCheckbox<T>(props: Props<T>) {
                 "
                 onKeyDown={ onKeyDownHandler }
               >
-                <div className=" relative w-full h-full">
+                <div className="relative w-full h-full">
                   <div 
                     className={ `
-                      absolute transition
-                      h-full aspect-square rounded-full',
+                      absolute 
+                      transition
+                      h-full aspect-square rounded-full
                       bg-${color}
                       ${ isActive() ? 'translate-x-full' : '' }
                     ` }
@@ -164,6 +181,6 @@ export interface RenderProps {
   props?: object;
   isActive?: ()=>boolean; 
   disabled?: boolean, 
-  // onChangeHandler: , 
+  onChangeHandler: CallableFunction, 
   color?: ThemedColorTypes.ThemeColors;
 }
