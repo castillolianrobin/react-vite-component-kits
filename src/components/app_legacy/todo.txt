@@ -6,18 +6,18 @@ IT WILL RERENDER ANYWAY
 - AppButton [DONE] [TESTED] [PAGED]
 ~ AppForm [PARTIALLY DONE] [TESTED] [PAGED] 
 - AppFormInput 
-1 AppFormCheckbox [DONE] [SEMI TESTED] [PAGED]
-2 AppFormCheckboxGroup [DONE] [TESTED] [PAGED]
-3 AppFormRadio [DONE] [SEMI TESTED] [PAGED]
-4 AppFormRadioGroup [DONE] [TESTED] [PAGED]
+~ AppFormCheckbox [DONE] [SEMI TESTED] [PAGED]
+~ AppFormCheckboxGroup [DONE] [TESTED] [PAGED]
+~ AppFormRadio [DONE] [SEMI TESTED] [PAGED]
+~ AppFormRadioGroup [DONE] [TESTED] [PAGED]
 ~ AppFormSelect [DONE] [UNTESTED] [PAGED]
 - AppFormTextArea [DONE] [TESTED] [PAGED]
 ~ AppFormMultiSelect [PARTIALLY DONE] [UNTESTED] [PAGED] --- EMPTY STATE
-5 AppFormFile [DONE] [TESTED] [PAGED]
+~ AppFormFile [DONE] [TESTED] [PAGED]
 ~ AppFormDatePicker (POSTPONED)
 - AppModal [DONE] [PAGED]
-6 AppPagination  [DONE] [TESTED] [PAGED]
-7 AppTable [DONE] [TESTED] [PAGED]
+1 AppPagination  [DONE] [TESTED] [PAGED]
+2 AppTable [DONE] [TESTED] [PAGED]
 - AppCards [PARTIALLY DONE] [TESTED] [PAGED]
 - AppDropdown [DONE] [TESTED] [PAGED] 
 

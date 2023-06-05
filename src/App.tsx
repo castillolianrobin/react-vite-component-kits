@@ -1,9 +1,11 @@
 import { Outlet } from 'react-router-dom'
+import { useDarkMode } from 'usehooks-ts';
 
 function App() {
-  
+  const { isDarkMode } = useDarkMode();
+
   return (
-    <div className='dark h-full'>
+    <div className={`h-full ${ isDarkMode ? 'dark' : 'light'}`}>
       <Outlet />
     </div>
   )

@@ -1,3 +1,4 @@
+import { ToggleDarkMode } from "@/components"
 import { AppButton } from "@/components/app"
 import componentRoutes from "@/modules/_components/_components.routes"
 import { HtmlHTMLAttributes, useState, } from "react"
@@ -74,7 +75,7 @@ function TopBar() {
         <span className="text-secondary-400 hidden md:inline"> / Vite + React 18 + Typescript</span>
       </h1>
 
-      {/* <ToggleDarkMode></ToggleDarkMode> */}
+      <ToggleDarkMode></ToggleDarkMode>
     </header>
   )
 }

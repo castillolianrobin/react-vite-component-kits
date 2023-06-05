@@ -1,6 +1,11 @@
-import { AppButton } from "@/components/app"
+import { ToggleDarkMode } from "@/components"
+import { AppButton, AppDropdown } from "@/components/app"
+import componentRoutes from "@/modules/_components/_components.routes"
+import { NavLink } from "react-router-dom";
 
 export default function HomePage() {
+  const navigation = componentRoutes;
+  
   return (
     <div className="flex flex-col dark:bg-secondary-800 h-full transition-colors">
       <header 
@@ -30,13 +35,13 @@ export default function HomePage() {
           <span>Github</span>
         </a>
 
-        {/* <div class="ml-auto md:mr-5 flex gap-3 items-center">
+        <div className="ml-auto md:mr-5 flex gap-3 items-center">
           <AppDropdown
-            trigger-variant="text"
-            trigger-text="Components"
+            triggerVariant="text"
+            triggerText="Components"
           >
             <ul 
-              class="
+              className="
                 absolute right-0 
                 mt-5 px-2
                 shadow-lg max-h-[60vh] 
@@ -46,34 +51,39 @@ export default function HomePage() {
                 dark:bg-secondary-900
               "
               >
-              <li
-                v-for="nav in navigations.filter(item=>item.label !== 'Home')"
-                :key="nav.label"
-              >
-                <router-link
-                  :to="{ name: nav.routeName }"
-                  class="
-                    whitespace-nowrap
-                    w-full 
-                    block 
-                    my-2 
-                    outline-none            
-                    focus-within:text-primary-200
-                    hover:text-primary-300
-                    border-l-4 border-primary-500/0
-                    transition-colors
-                  "
-                >
-                  {{  nav.label  }}
-                </router-link>
-              </li>
+                {
+                  navigation
+                    .filter(item=>item.label !== 'Home')
+                    .map(nav=>(
+                      <li
+                        key={ nav.label }
+                      >
+                        <NavLink
+                          to={ `_component/${nav.path}` }
+                          className="
+                            whitespace-nowrap
+                            w-full 
+                            block 
+                            my-2 
+                            outline-none            
+                            focus-within:text-primary-200
+                            hover:text-primary-300
+                            border-l-4 border-primary-500/0
+                            transition-colors
+                          "
+                        >
+                          {  nav.label  }
+                        </NavLink>
+                      </li>
+                    ))
+                }
             </ul>
           </AppDropdown>
 
           <ToggleDarkMode
-            :options="{ initialValue: 'dark' }"
+            default={ true }
           ></ToggleDarkMode>
-        </div> */}
+        </div>
 
 
       </header>

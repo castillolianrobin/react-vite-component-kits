@@ -43,6 +43,11 @@ const componentRoutes: ComponentRoutes[] = [
     element: lazyLoadRoute(() => import(`./pages/ModalPage`)),
   },
   {
+    label: 'Paginations',
+    path: 'form/pagination',
+    element: lazyLoadRoute(() => import(`./pages/PaginationPage`)),
+  },
+  {
     label: 'Form Validation',
     path: 'form/validation',
     element: lazyLoadRoute(() => import(`./pages/FormPage`)),
@@ -67,6 +72,7 @@ const componentRoutes: ComponentRoutes[] = [
     path: 'form/file-upload',
     element: lazyLoadRoute(() => import(`./pages/FormFilePage`)),
   },
+  
 ];
 
 export default componentRoutes;

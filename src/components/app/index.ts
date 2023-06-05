@@ -18,6 +18,7 @@ export type * as AppFormSelectTypes from './AppFormSelect';
 export { default as AppFormTextArea } from './AppFormTextArea';
 export { default as AppLoading } from './AppLoading';
 export { default as AppModal } from './AppModal';
+export { default as AppPagination } from './AppPagination';
 export { default as AppSteps } from './AppSteps';
 export { default as AppTabs } from './AppTabs';
 export type * as AppTabsTypes from './AppTabs';
