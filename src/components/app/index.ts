@@ -21,6 +21,8 @@ export { default as AppModal } from './AppModal';
 export { default as AppPagination } from './AppPagination';
 export { default as AppSteps } from './AppSteps';
 export { default as AppTabs } from './AppTabs';
+export { default as AppTable } from './AppTable';
+export type * as AppTableType from './AppTable';
 export type * as AppTabsTypes from './AppTabs';
 export { default as AppTooltip } from './AppTooltip';
 export { default as AppFormRadio } from './AppFormRadio';
