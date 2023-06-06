@@ -3,6 +3,8 @@ import App from '../App';
 import componentRoutes from "@/modules/_components/_components.routes";
 import LayoutDashboardComponent from "@/layout/LayoutDashboardComponent";
 import HomePage from "@/pages/public/HomePage";
+import sampleRoutes from "@/modules/Sample/sample.routes";
+import LayoutDefault from "@/layout/LayoutDefault";
 
 const routes:RouteObject[] = [
   {
@@ -13,6 +15,11 @@ const routes:RouteObject[] = [
         path: '/_component',
         element: <LayoutDashboardComponent />,
         children: [ ...componentRoutes ],
+      },
+      {
+        path: '/_sample',
+        element: <LayoutDefault />,
+        children: [ ...sampleRoutes ],
       },    
       {
         path: '/',

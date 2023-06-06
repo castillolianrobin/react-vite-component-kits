@@ -3,20 +3,26 @@ import { AppButton } from "@/components/app"
 import componentRoutes from "@/modules/_components/_components.routes"
 import { HtmlHTMLAttributes, useState, } from "react"
 import { NavLink, Outlet } from "react-router-dom"
+import { useDarkMode } from 'usehooks-ts';
 
 
 export default function LayoutDashboardComponent(props: Props) {
+  /** Dark Mode Hook */
+  const { isDarkMode } = useDarkMode();
+  
+  
   return (
     <div 
       {  ...props } 
-      className="
+      className={ `
         relative 
         w-full h-full 
         grid grid-rows-dashboard grid-cols-dashboard
         text-secondary-800 dark:text-secondary-200
         bg-secondary-100 dark:bg-secondary-900
-        transition-colors 
-      "
+        transition-colors
+        ${ isDarkMode ? 'dark' : 'light' } 
+      ` }
     >
       {/* Top Navigation */}
       <TopBar></TopBar>

@@ -1,8 +1,7 @@
 import { HtmlHTMLAttributes, ReactNode, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 // Hooks
-import { ThemedColorTypes } from '@/hooks';
-import { useThemedColor } from '@/utils/useThemedColor';
+import { ThemedColorTypes, useThemedColor } from '@/hooks';
 
 export default function AppTabs(props: Props) {
   /** Themed Color Hooks */
