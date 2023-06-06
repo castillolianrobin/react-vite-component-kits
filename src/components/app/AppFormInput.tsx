@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, ReactNode, } from "react";
+import { InputHTMLAttributes, ReactNode, useState, } from "react";
 // Components
 import { AppFormInputContainer, type AppFormInputContainerTypes } from ".";
 // Hooks
@@ -6,6 +6,7 @@ import { useFormValidation, useThemedColor } from "@/hooks";
 import type { ThemedColorTypes, ValidationTypes } from "@/hooks";
 // Helpers 
 import { objectHelper } from "@/helpers";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 
 export default function AppFormInput(props: Props) {
   /** Validations Hook */
@@ -24,6 +25,8 @@ export default function AppFormInput(props: Props) {
     props,
     [ 'onValueChange']
   );
+  // Password Input: show password state 
+  const [ showPass, setShowPass ] = useState(false);
 
   // Error Message
   const error = `${ props.error || errorMessage }`;
@@ -60,12 +63,25 @@ export default function AppFormInput(props: Props) {
       {/* Input */}
       <input
         { ...inputProps }
+        type={ showPass ? 'text' : props.type }
         value={`${props.value}`}
         onChange={ onChangeHandler } 
         onFocus={ onFocusHandler}
         aria-label={props.name || props.label}
         className="px-1 w-full bg-transparent outline-none" 
       />
+      {
+        props.type === 'password' && (
+          <span 
+            className="cursor-pointer"
+            onClick={ ()=>setShowPass(!showPass)} 
+          >{
+            showPass 
+            ? <EyeSlashIcon className="h-6"></EyeSlashIcon>
+            : <EyeIcon className="h-6"></EyeIcon>
+          }</span>
+        )
+      }
     </AppFormInputContainer>
   )
 }
