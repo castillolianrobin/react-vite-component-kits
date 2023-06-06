@@ -15,7 +15,6 @@
 <div>
     <img 
         src="https://raw.githubusercontent.com/castillolianrobin/react-vite-component-kits/main/public/home_sample.png"
-        width="95%"
         style="border-radius: 12px; margin: auto; display: block;" 
     />
 </div>
