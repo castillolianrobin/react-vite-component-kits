@@ -12,37 +12,40 @@ export default function LayoutDashboardComponent(props: Props) {
   
   
   return (
-    <div 
-      {  ...props } 
-      className={ `
-        relative 
-        w-full h-full 
-        grid grid-rows-dashboard grid-cols-dashboard
-        text-secondary-800 dark:text-secondary-200
-        bg-secondary-100 dark:bg-secondary-900
-        transition-colors
-        ${ isDarkMode ? 'dark' : 'light' } 
-      ` }
+    <div
+      className={ `${ isDarkMode ? 'dark' : 'light' }` }
     >
-      {/* Top Navigation */}
-      <TopBar></TopBar>
-      
-      {/* Side Bar */}
-      <SideBar
-        className="row-start-2"
-      ></SideBar>
-
-
-      {/* Main Content */}
-      <main 
-        className="
-          scrollbar
-          row-start-2 col-start-2 
-          overflow-auto
-        "
+      <div 
+        {  ...props } 
+        className={ `
+          relative 
+          w-full h-full 
+          grid grid-rows-dashboard grid-cols-dashboard
+          text-secondary-800 dark:text-secondary-200
+          bg-secondary-100 dark:bg-secondary-900
+          transition-colors
+        ` }
       >
-        { props.children || (<Outlet />) }
-      </main>
+        {/* Top Navigation */}
+        <TopBar></TopBar>
+        
+        {/* Side Bar */}
+        <SideBar
+          className="row-start-2"
+        ></SideBar>
+
+
+        {/* Main Content */}
+        <main 
+          className="
+            scrollbar
+            row-start-2 col-start-2 
+            overflow-auto
+          "
+        >
+          { props.children || (<Outlet />) }
+        </main>
+      </div>
     </div>
   )
 }
