@@ -13,7 +13,7 @@ export default function LayoutDashboardComponent(props: Props) {
   
   return (
     <div
-      className={ `${ isDarkMode ? 'dark' : 'light' }` }
+      className={ `h-full w-full ${ isDarkMode ? 'dark' : 'light' }` }
     >
       <div 
         {  ...props } 
