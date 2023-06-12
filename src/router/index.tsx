@@ -10,6 +10,10 @@ const routes:RouteObject[] = [
   {
     path: '/',
     element: <App />,
+    loader() {
+      console.log('asd')
+      return null;
+    },
     children: [
       {
         path: '/_component',

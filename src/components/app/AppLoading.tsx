@@ -1,3 +1,4 @@
+import { objectHelper } from "@/helpers";
 import { ThemedColorTypes, useThemedColor } from "@/hooks";
 import { HtmlHTMLAttributes } from "react";
 
@@ -5,10 +6,11 @@ import { HtmlHTMLAttributes } from "react";
 export default function AppLoading(props: Props) {
   const { color } = useThemedColor(props.color);
   
+  const _props = objectHelper.deleteProperties(props, ['spinnerClass', 'color'])
 
   return (
     <div 
-      {  ...props }
+      {  ..._props }
       className={ `flex items-center justify-center ${props.className}` }
       aria-label="loading spinner"
       role="alert" 
