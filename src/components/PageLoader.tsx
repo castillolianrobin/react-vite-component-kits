@@ -14,13 +14,13 @@ export default function PageLoader() {
       clearInterval(interValId);
     }
   }
-
   useEffect(()=>{
     if (pageLoading) {
       setHideLoading(false)
       setLoading(loadingPercent + 15);
       if (!interValId) {
-        setInterValId(setInterval(runLoading, 100))
+        const intervalid = setInterval(()=>runLoading(), 100)
+        setInterValId(intervalid)
       }
     } else {
       clearInterval(interValId);
