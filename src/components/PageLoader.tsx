@@ -1,5 +1,6 @@
 import { usePageLoadingStore } from "@/stores/pageLoadingStore";
 import { useEffect, useState } from "react";
+import { useInterval } from "usehooks-ts";
 
 export default function PageLoader() {
   
@@ -7,24 +8,27 @@ export default function PageLoader() {
   // const { pageLoading } = storeToRefs(usePageLoadStore())
   const [loadingPercent, setLoading] = useState(0);
   const [hideLoading, setHideLoading] = useState(false);
-  const [interValId, setInterValId] = useState<ReturnType<typeof setInterval>>();
-  function runLoading() {
-    setLoading(loadingPercent + 5)
+  const [intervalDelay, setIntervalDelay] = useState(0);
+  console.log('mounting')
+  
+  // const runLoading = 
+  console.log('interval', intervalDelay, intervalDelay > 0 ? intervalDelay : null)
+  useInterval(() => {
+    console.log('test', loadingPercent, loadingPercent + 5);
+    setLoading((loadingPercent + 5))
     if (loadingPercent > 60) {
-      clearInterval(interValId);
+      setIntervalDelay(0);
     }
-  }
+  }, intervalDelay > 0 ? intervalDelay : null)
+  
   useEffect(()=>{
     if (pageLoading) {
       setHideLoading(false)
-      setLoading(loadingPercent + 15);
-      if (!interValId) {
-        const intervalid = setInterval(()=>runLoading(), 100)
-        setInterValId(intervalid)
-      }
+      setLoading(15);
+      setIntervalDelay(200);
     } else {
-      clearInterval(interValId);
-      setLoading(100);
+      setIntervalDelay(0);
+      setLoading(100)
       setTimeout(()=>setHideLoading(true), 700);
     }
   }, 
