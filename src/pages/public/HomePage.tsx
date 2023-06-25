@@ -18,7 +18,7 @@ export default function HomePage() {
     >
       <div 
         className={ `
-          flex flex-col 
+          flex flex-col
           dark:bg-secondary-800 
           h-full 
           transition-colors
@@ -108,7 +108,7 @@ export default function HomePage() {
           className="
             px-5 pb-5 
             flex-grow flex-shrink 
-            flex flex-col 
+            flex flex-col items-center justify-center
             overflow-auto scrollbar
           "
         >
